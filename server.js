@@ -17,6 +17,36 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+ app.get("/quotes", (req, res)=>{
+        res.send(quotes)
+      })
+
+      app.get("/quotes/random", (req, res)=>{
+        function pickFromArray(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+        res.send(pickFromArray(quotes))
+
+        
+      })
+
+
+      app.get("/quotes/search", (req, res)=>{
+        const term=req.query.term
+       
+        
+        function search(arr){
+          //going to iterate through the array to get the 
+          return arr.filter((item)=>{
+            
+            if(item.quote.includes(term)){
+              console.log(item)
+            return item
+          }
+       })}
+
+        res.send(search(quotes))
+      })
 
 //...END OF YOUR CODE
 
